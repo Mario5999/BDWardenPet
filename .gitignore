@@ -1,0 +1,25 @@
+# Entorno
+.env
+.env.local
+.env.*.local
+
+# Docker
+.DS_Store
+*.log
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Sistema
+Thumbs.db
+.DS_Store

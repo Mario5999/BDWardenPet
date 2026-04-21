@@ -1,0 +1,33 @@
+#!/bin/bash
+# ════════════════════════════════════════════════════════════════
+# Scripts útiles para WardenPet Database
+# ════════════════════════════════════════════════════════════════
+
+echo "🐾 WardenPet Database - Scripts de utilidad"
+echo ""
+echo "Comandos disponibles:"
+echo ""
+echo "1. Iniciar base de datos:"
+echo "   docker-compose up -d"
+echo ""
+echo "2. Ver logs:"
+echo "   docker-compose logs -f postgres"
+echo ""
+echo "3. Conectarse a PostgreSQL:"
+echo "   docker-compose exec postgres psql -U wardenpet_user -d wardenpet_db"
+echo ""
+echo "4. Detener base de datos:"
+echo "   docker-compose down"
+echo ""
+echo "5. Resetear base de datos (⚠️ borra todos los datos):"
+echo "   docker-compose down -v && docker-compose up -d"
+echo ""
+echo "6. Ver estado de contenedores:"
+echo "   docker-compose ps"
+echo ""
+echo "7. Ver información de la BD:"
+echo "   docker-compose exec postgres psql -U wardenpet_user -d wardenpet_db -c \"\\l\""
+echo ""
+echo "8. Listar tablas:"
+echo "   docker-compose exec postgres psql -U wardenpet_user -d wardenpet_db -c \"\\dt\""
+echo ""

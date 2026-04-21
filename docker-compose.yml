@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: wardenpet-db
+    environment:
+      POSTGRES_USER: ${DB_USER:-wardenpet_user}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-wardenpet_secure_pass}
+      POSTGRES_DB: ${DB_NAME:-wardenpet_db}
+      POSTGRES_INITDB_ARGS: "--encoding=UTF8 --locale=es_ES.UTF-8"
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/01-init.sql
+      - ./init-admin.sql:/docker-entrypoint-initdb.d/02-init-admin.sql
+    networks:
+      - wardenpet-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-wardenpet_user}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+    driver: local
+
+networks:
+  wardenpet-network:
+    driver: bridge
