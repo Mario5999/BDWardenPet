@@ -1,7 +1,5 @@
 BEGIN;
 
-DELETE FROM users WHERE email = 'admin@wardenpet.com';
-
 INSERT INTO users (name, email, password, role)
 VALUES (
   'Administrador',
